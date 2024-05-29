@@ -9,8 +9,8 @@ fn main() {
         Some(Command::List {}) => {
             println!("List");
         }
-        Some(Command::Search {}) => {
-            println!("Search");
+        Some(Command::Search { query }) => {
+            println!("Search with {query}");
         }
         None => {}
     }

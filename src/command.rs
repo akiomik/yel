@@ -6,5 +6,5 @@ pub enum Command {
     List {},
 
     /// Search highlights and notes
-    Search {},
+    Search { query: String },
 }
