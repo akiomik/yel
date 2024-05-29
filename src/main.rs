@@ -1,3 +1,17 @@
+use clap::Parser;
+
+use yel::{Cli, Command};
+
 fn main() {
-    println!("Hello, world!");
+    let cli = Cli::parse();
+
+    match &cli.command {
+        Some(Command::List {}) => {
+            println!("List");
+        }
+        Some(Command::Search {}) => {
+            println!("Search");
+        }
+        None => {}
+    }
 }
