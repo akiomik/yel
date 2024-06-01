@@ -1,14 +1,21 @@
+use anyhow::Result;
 use clap::Parser;
 
-use yel::{BookCommand, Cli, Command, HighlightCommand};
+use sea_orm::Database;
+use yel::{BookCommand, BookRepository, Cli, Command, HighlightCommand};
 
-fn main() {
+#[tokio::main]
+async fn main() -> Result<()> {
     let cli = Cli::parse();
 
     match &cli.command {
         Some(Command::Book(args)) => match &args.command {
             Some(BookCommand::List {}) => {
-                println!("List");
+                let db = Database::connect("sqlite://./db/BKLibrary.sqlite?mode=ro").await?;
+                let repo = BookRepository::new(db);
+                let books = repo.find_all().await?;
+
+                println!("List: {:?}", books);
             }
             Some(BookCommand::Search { query }) => {
                 println!("Search with {query}");
@@ -26,4 +33,6 @@ fn main() {
         },
         None => {}
     }
+
+    Ok(())
 }
