@@ -12,9 +12,9 @@ pub struct Model {
     #[sea_orm(column_name = "ZCONTENTTYPE")]
     pub content_type: u8,
     #[sea_orm(column_name = "ZISNEW")]
-    pub is_new: bool,
+    pub is_new: Option<bool>,
     #[sea_orm(column_name = "ZISFINISHED")]
-    pub is_finished: bool,
+    pub is_finished: Option<bool>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
