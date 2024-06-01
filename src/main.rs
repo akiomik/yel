@@ -1,7 +1,8 @@
 use anyhow::Result;
 use clap::Parser;
-
 use sea_orm::Database;
+use tabled::Table;
+
 use yel::{BookCommand, BookRepository, Cli, Command, HighlightCommand};
 
 #[tokio::main]
@@ -14,8 +15,9 @@ async fn main() -> Result<()> {
                 let db = Database::connect("sqlite://./db/BKLibrary.sqlite?mode=ro").await?;
                 let repo = BookRepository::new(db);
                 let books = repo.find_all().await?;
+                let table = Table::new(books);
 
-                println!("List: {:?}", books);
+                println!("{table}");
             }
             Some(BookCommand::Search { query }) => {
                 println!("Search with {query}");
