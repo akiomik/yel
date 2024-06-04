@@ -6,6 +6,7 @@ use tabled::{
     Table,
 };
 use crossterm::terminal;
+use pager::Pager;
 
 use yel::{BookCommand, BookRepository, Cli, Command, HighlightCommand};
 
@@ -26,6 +27,7 @@ async fn main() -> Result<()> {
                 let mut table = Table::new(books);
                 table.with(Style::modern()).with(table_settings);
 
+                Pager::new().setup();
                 println!("{table}");
             }
             Some(BookCommand::Search { query }) => {
