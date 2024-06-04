@@ -14,7 +14,7 @@ pub struct Model {
     #[tabled(rename = "Title")]
     pub title: String,
     #[sea_orm(column_name = "ZAUTHOR")]
-    #[tabled(rename = "Author")]
+    #[tabled(rename = "Author", display_with("Self::display_author", self))]
     pub author: String,
     #[sea_orm(column_name = "ZCONTENTTYPE")]
     #[tabled(rename = "Type")]
@@ -25,6 +25,20 @@ pub struct Model {
     #[sea_orm(column_name = "ZISFINISHED")]
     #[tabled(rename = "Finished", display_with = "display_option_bool")]
     pub is_finished: Option<bool>,
+}
+
+impl Model {
+    pub fn is_unknown_author(&self) -> bool {
+        self.author == "\u{e83a}UnknownAuthor"
+    }
+
+    pub fn display_author(&self) -> String {
+        if self.is_unknown_author() {
+            "Unknwon Author".to_string()
+        } else {
+            self.author.clone()
+        }
+    }
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
