@@ -1,6 +1,7 @@
 use sea_orm::entity::prelude::*;
 use tabled::Tabled;
 
+use crate::display_option_bool;
 use crate::ContentType;
 
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Tabled)]
@@ -19,18 +20,11 @@ pub struct Model {
     #[tabled(rename = "Type")]
     pub content_type: ContentType,
     #[sea_orm(column_name = "ZISNEW")]
-    #[tabled(rename = "New", display_with = "display_option")]
+    #[tabled(rename = "New", display_with = "display_option_bool")]
     pub is_new: Option<bool>,
     #[sea_orm(column_name = "ZISFINISHED")]
-    #[tabled(rename = "Finished", display_with = "display_option")]
+    #[tabled(rename = "Finished", display_with = "display_option_bool")]
     pub is_finished: Option<bool>,
-}
-
-fn display_option(o: &Option<bool>) -> String {
-    match o {
-        Some(s) => format!("{s}"),
-        None => "-".to_string(),
-    }
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
