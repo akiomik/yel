@@ -1,8 +1,8 @@
-use sea_orm::{DbErr, QueryOrder};
 use sea_orm::{DatabaseConnection, EntityTrait};
+use sea_orm::{DbErr, QueryOrder};
 
 use crate::book::Entity as Book;
-use crate::book::{Model, Column};
+use crate::book::{Column, Model};
 
 pub struct BookRepository {
     db: DatabaseConnection,

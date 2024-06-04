@@ -1,7 +1,11 @@
 use anyhow::Result;
 use clap::Parser;
 use sea_orm::Database;
-use tabled::Table;
+use tabled::{
+    settings::{peaker::PriorityMax, Settings, Style, Width},
+    Table,
+};
+use crossterm::terminal;
 
 use yel::{BookCommand, BookRepository, Cli, Command, HighlightCommand};
 
@@ -15,7 +19,12 @@ async fn main() -> Result<()> {
                 let db = Database::connect("sqlite://./db/BKLibrary.sqlite?mode=ro").await?;
                 let repo = BookRepository::new(db);
                 let books = repo.find_all().await?;
-                let table = Table::new(books);
+                let terminal_width = terminal::size()?.0 as usize;
+                let table_settings = Settings::default()
+                    .with(Width::wrap(terminal_width).priority::<PriorityMax>())
+                    .with(Width::increase(terminal_width));
+                let mut table = Table::new(books);
+                table.with(Style::modern()).with(table_settings);
 
                 println!("{table}");
             }
