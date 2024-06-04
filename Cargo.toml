@@ -7,6 +7,7 @@ edition = "2021"
 anyhow = "1.0.86"
 clap = { version = "4.5.4", features = ["derive"] }
 crossterm = "0.27.0"
+pager = "0.16.1"
 sea-orm = { version = "0.12", features = [ "sqlx-sqlite", "runtime-tokio-native-tls", "macros" ] }
 tabled = "0.15.0"
 tokio = { version = "1", features = ["full"] }
