@@ -1,12 +1,12 @@
 use anyhow::Result;
 use clap::Parser;
+use crossterm::terminal;
+use pager::Pager;
 use sea_orm::Database;
 use tabled::{
     settings::{peaker::PriorityMax, Settings, Style, Width},
     Table,
 };
-use crossterm::terminal;
-use pager::Pager;
 
 use yel::{BookCommand, BookRepository, Cli, Command, HighlightCommand};
 
