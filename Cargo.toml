@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.86"
-clap = { version = "4.5.13", features = ["derive"] }
+clap = { version = "4.5.15", features = ["derive"] }
 crossterm = "0.28.1"
 pager = "0.16.1"
 sea-orm = { version = "1.0", features = [ "sqlx-sqlite", "runtime-tokio-native-tls", "macros" ] }
