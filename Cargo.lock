@@ -547,6 +547,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.100",
+ "unicode-xid",
 ]
 
 [[package]]
@@ -1665,14 +1666,15 @@ dependencies = [
 
 [[package]]
 name = "sea-orm"
-version = "1.1.15"
+version = "1.1.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "458d38dfa73e8ab64260f9fd96d61e1ca96a312d06e94b71615a417ef29efcac"
+checksum = "699b1ec145a6530c8f862eed7529d8a6068392e628d81cc70182934001e9c2a3"
 dependencies = [
  "async-stream",
  "async-trait",
  "bigdecimal",
  "chrono",
+ "derive_more",
  "futures-util",
  "log",
  "ouroboros",
@@ -1694,9 +1696,9 @@ dependencies = [
 
 [[package]]
 name = "sea-orm-macros"
-version = "1.1.15"
+version = "1.1.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af976292446b09dd51d7b1784d6195dec76844e9e9e980b5fb12634ef417d6ea"
+checksum = "b0c964f4b7f34f53decf381bc88f03187b9355e07f356ce65544626e781a9585"
 dependencies = [
  "heck 0.5.0",
  "proc-macro2",
@@ -2458,6 +2460,12 @@ name = "unicode-width"
 version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "68f5e5f3158ecfd4b8ff6fe086db7c8467a2dfdac97fe420f2b7c4aa97af66d6"
+
+[[package]]
+name = "unicode-xid"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
 
 [[package]]
 name = "url"
