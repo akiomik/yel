@@ -22,7 +22,7 @@ async fn main() -> Result<()> {
                 let books = repo.find_all().await?;
                 let terminal_width = terminal::size()?.0 as usize;
                 let table_settings = Settings::default()
-                    .with(Width::wrap(terminal_width).priority::<PriorityMax>())
+                    .with(Width::wrap(terminal_width).priority(PriorityMax::default()))
                     .with(Width::increase(terminal_width));
                 let mut table = Table::new(books);
                 table.with(Style::modern()).with(table_settings);
