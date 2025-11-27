@@ -1,7 +1,7 @@
 use sea_orm::entity::prelude::*;
 use tabled::Tabled;
 
-use crate::{display_option_bool, ContentType};
+use crate::{ContentType, display_option_bool};
 
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Tabled)]
 #[sea_orm(table_name = "ZBKLIBRARYASSET")]
