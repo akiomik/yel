@@ -4,8 +4,8 @@ use crossterm::terminal;
 use pager::Pager;
 use sea_orm::Database;
 use tabled::{
-    settings::{peaker::PriorityMax, Settings, Style, Width},
     Table,
+    settings::{Settings, Style, Width, peaker::PriorityMax},
 };
 
 use yel::{BookCommand, BookRepository, Cli, Command, HighlightCommand};
