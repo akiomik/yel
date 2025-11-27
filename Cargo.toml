@@ -8,6 +8,6 @@ anyhow = "1.0.100"
 clap = { version = "4.5.53", features = ["derive"] }
 crossterm = "0.29.0"
 pager = "0.16.1"
-sea-orm = { version = "1.1", features = [ "sqlx-sqlite", "runtime-tokio-native-tls", "macros" ] }
+sea-orm = { version = "1.1", features = [ "sqlx-sqlite", "runtime-tokio-native-tls", "macros" ], default-features = false }
 tabled = "0.20.0"
 tokio = { version = "1", features = ["full"] }
